@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - Kusina ni Katya</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          accent: '#cda45e',
+          'accent-light': '#e5b66a',
+          'accent-dark': '#b8924e',
+          dark: '#1a1a1a',
+          'dark-light': '#2d2d2d',
+          'light-bg': '#fef9f3',
+          'cream': '#f5e9da',
+        },
+        fontFamily: {
+          poppins: ['Poppins', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.pattern-bg {
+  background-color: #fef9f3;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(205, 164, 94, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(205, 164, 94, 0.05) 0%, transparent 50%);
+}
+
+.verification-input {
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+</style>
+</head>
+
+<body class="bg-light-bg pattern-bg min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+
+<div class="w-full max-w-6xl">
+  <!-- Back to Home Link -->
+  <div class="mb-8">
+    <a href="index.html" class="inline-flex items-center text-dark hover:text-accent transition-colors duration-300 group">
+      <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+      <span class="font-medium">Back to Home</span>
+    </a>
+  </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+    <!-- Left Side - Branding & Image -->
+    <div class="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-accent-dark to-accent rounded-3xl p-12 shadow-2xl animate-slide-in-left">
+      <div class="text-center text-white">
+        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg overflow-hidden">
+          <img src="assets/images/logo1.png" alt="Kusina ni Katya Logo" class="w-20 h-20 object-contain">
+        </div>
+        <h1 class="text-4xl font-bold mb-4">Kusina ni Katya</h1>
+        <p class="text-xl mb-6 text-white/90">Authentic Filipino Cuisine</p>
+        <div class="w-32 h-1 bg-white/50 mx-auto rounded-full mb-8"></div>
+        <p class="text-lg text-white/80 max-w-md">Welcome back! Sign in to enjoy exclusive deals, faster checkout, and order tracking!</p>
+        
+        <!-- Decorative Food Icons -->
+        <div class="mt-12 flex justify-center gap-8 text-6xl">
+          <span class="animate-bounce" style="animation-delay: 0s;">🍲</span>
+          <span class="animate-bounce" style="animation-delay: 0.2s;">🍚</span>
+          <span class="animate-bounce" style="animation-delay: 0.4s;">🥘</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side - Forms -->
+    <div class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12">
+      <!-- Logo for Mobile -->
+      <div class="lg:hidden text-center mb-8">
+        <div class="w-20 h-20 bg-gradient-to-br from-accent to-accent-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <span class="text-white text-3xl font-bold">K</span>
+        </div>
+        <h2 class="text-2xl font-bold text-dark">Kusina ni Katya</h2>
+        <p class="text-gray-600 text-sm">Authentic Filipino Cuisine</p>
+      </div>
+
+      <!-- Step 1: Sign Up Form -->
+      <form id="signup-form">
+        <h2 class="text-3xl font-bold text-dark mb-2">Create Account</h2>
+        <p class="text-gray-600 mb-8">Join us and start ordering delicious Filipino food!</p>
+
+        <!-- Full Name -->
+        <div class="mb-6">
+          <label class="block text-dark font-semibold mb-2" for="signup-name">Full Name</label>
+          <input 
+            type="text" 
+            id="signup-name" 
+            required
+            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-accent focus:outline-none"
+            placeholder="Full Name"
+          >
+        </div>
+
+        <!-- Email -->
+        <div class="mb-6">
+          <label class="block text-dark font-semibold mb-2" for="signup-email">Email Address</label>
+          <input 
+            type="email" 
+            id="signup-email" 
+            required
+            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-accent focus:outline-none"
+            placeholder="Email address"
+          >
+        </div>
+
+        <!-- Phone -->
+        <div class="mb-6">
+          <label class="block text-dark font-semibold mb-2" for="signup-phone">Phone Number</label>
+          <input 
+            type="tel" 
+            id="signup-phone" 
+            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-accent focus:outline-none"
+            placeholder="Phone number (optional)"
+          >
+        </div>
+
+        <!-- Password -->
+        <div class="mb-6">
+          <label class="block text-dark font-semibold mb-2" for="signup-password">Password</label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="signup-password" 
+              required
+              minlength="8"
+              class="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-lg focus:border-accent focus:outline-none"
+              placeholder="Password (min 8 characters)"
+            >
+            <button 
+              type="button"
+              onclick="togglePasswordVisibility('signup-password', 'toggle-signup-password')"
+              id="toggle-signup-password"
+              class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/20 rounded p-1 transition-colors"
+              aria-label="Toggle password visibility"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Terms & Conditions -->
+        <div class="mb-6">
+          <label class="flex items-start cursor-pointer">
+            <input type="checkbox" required class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent mt-1">
+            <span class="ml-2 text-sm text-gray-600">
+              I agree to the <a href="#" class="text-accent hover:text-accent-dark font-semibold">Terms & Conditions</a> and <a href="#" class="text-accent hover:text-accent-dark font-semibold">Privacy Policy</a>
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full py-4 bg-gradient-to-r from-accent to-accent-dark text-white font-bold text-lg rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 mb-6">
+         Create Account
+        </button>
+
+        <!-- Divider -->
+        <div class="relative mb-6">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t-2 border-accent/20"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-4 bg-white text-gray-600 font-medium">Or sign up with</span>
+          </div>
+        </div>
+
+        <!-- Google Signup -->
+        <div class="mb-8 flex justify-center">
+          <div id="g_id_onload" data-client_id="185778585245-6o939pgomkeqnse9rsa3th61b2biacsu.apps.googleusercontent.com" data-callback="handleSignupGoogle" data-auto_prompt="false"></div>
+          <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="continue_with" data-shape="rectangular" data-logo_alignment="left" data-use_fedcm_for_prompt="false"></div>
+        </div>
+
+        <!-- Sign In Link -->
+        <div class="text-center mt-6">
+          <p class="text-gray-600">
+            Already have an account? 
+            <a href="login.html" class="text-accent hover:text-accent-dark font-bold transition-colors duration-300">Sign In</a>
+          </p>
+        </div>
+      </form>
+
+      <!-- Step 2: Verification Form (Hidden by default) -->
+      <form id="verification-form" class="hidden">
+        <h2 class="text-3xl font-bold text-dark mb-2">Verify Your Email</h2>
+        <p class="text-gray-600 mb-8">We sent a 6-digit code to <span id="verification-email" class="font-semibold text-accent"></span></p>
+
+        <div class="mb-6 text-center">
+          <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <p class="text-sm text-gray-600 mb-6">Check your email inbox and spam folder</p>
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-dark font-semibold mb-3 text-center">Verification Code</label>
+          <input 
+            type="text" 
+            id="verification-code" 
+            maxlength="6"
+            pattern="[0-9]{6}"
+            inputmode="numeric"
+            class="verification-input w-full px-4 py-4 border-2 border-gray-200 rounded-lg focus:border-accent focus:outline-none"
+            placeholder="000000"
+          >
+          <p class="text-xs text-gray-500 text-center mt-2">Code expires in <span id="code-timer">10:00</span></p>
+        </div>
+
+        <div id="verification-error" class="hidden mb-4 p-3 bg-red-100 border-l-4 border-red-500 text-red-700 text-sm rounded">
+          Invalid verification code. Please try again.
+        </div>
+
+        <button type="submit" class="w-full py-4 bg-gradient-to-r from-accent to-accent-dark text-white font-bold text-lg rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 mb-4">
+          Verify & Create Account
+        </button>
+
+        <div class="flex gap-3">
+          <button type="button" onclick="resendCode()" class="flex-1 py-3 bg-gray-100 text-dark font-semibold rounded-full hover:bg-gray-200 transition-all duration-300">
+            Resend Code
+          </button>
+          <button type="button" onclick="backToSignup()" class="flex-1 py-3 bg-gray-100 text-dark font-semibold rounded-full hover:bg-gray-200 transition-all duration-300">
+            Back
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div id="success-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
+  <div class="bg-white rounded-3xl p-8 max-w-md mx-4 shadow-2xl text-center">
+    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+      </svg>
+    </div>
+    <h3 class="text-2xl font-bold text-dark mb-2" id="modal-title">Success!</h3>
+    <p class="text-gray-600 mb-6" id="modal-message">Account created successfully.</p>
+    <button onclick="closeModal()" class="w-full px-6 py-3 bg-gradient-to-r from-accent to-accent-dark text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300">
+      Continue
+    </button>
+  </div>
+</div>
+
+<script>
+// Get API base URL with fallback logic
+function getApiBase() {
+  const stored = localStorage.getItem('apiBase');
+  if (stored && stored.trim().length > 0) {
+    return stored.replace(/\/+$/, '');
+  }
+  // If current origin is already the Railway app (or same backend), use relative path
+  if (window.location.origin.includes('kusinanikatya.up.railway.app')) {
+    return '';
+  }
+  // Default to hosted API
+  return 'https://kusinanikatya.up.railway.app';
+}
+
+// Fetch with automatic fallback for 404 errors
+async function apiFetch(path, options = {}) {
+  const base = getApiBase();
+  const url = base + path;
+  
+  // Try primary path first
+  let response = await fetch(url, options);
+  
+  // If 404, try with /api prefix
+  if (response.status === 404 && !path.startsWith('/api/')) {
+    console.warn(`⚠️ Endpoint ${url} not found. Retrying with /api prefix.`);
+    const fallbackUrl = base + '/api' + path;
+    response = await fetch(fallbackUrl, options);
+  }
+  
+  return response;
+}
+
+let userEmail = '';
+let codeExpiryTimer;
+let signupCooldownTimer = null;
+let resendCooldownTimer = null;
+
+function startButtonCooldown(buttonEl, seconds, baseText) {
+  if (!buttonEl) return;
+  let remaining = seconds;
+  buttonEl.disabled = true;
+  const originalText = buttonEl.textContent;
+  const tick = () => {
+    buttonEl.textContent = `${baseText} (${remaining}s)`;
+    remaining -= 1;
+    if (remaining < 0) {
+      clearInterval(timerId);
+      buttonEl.disabled = false;
+      buttonEl.textContent = originalText;
+    }
+  };
+  tick();
+  const timerId = setInterval(tick, 1000);
+  return timerId;
+}
+
+// No health banner needed; behave like login.html
+
+// Handle signup form submission
+document.getElementById('signup-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const name = document.getElementById('signup-name').value;
+  const email = document.getElementById('signup-email').value;
+  const phone = document.getElementById('signup-phone').value;
+  const password = document.getElementById('signup-password').value;
+  const submitBtn = e.submitter || document.querySelector('#signup-form button[type="submit"]');
+
+  try {
+    console.log('📤 Sending signup request...', { name, email, phone: phone || 'none' });
+    
+    const response = await apiFetch('/auth/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, phone, password })
+    });
+
+    console.log('📥 Response status:', response.status, response.statusText);
+
+    let data;
+    try { 
+      data = await response.json(); 
+      console.log('📦 Response data:', data);
+    } catch(e) { 
+      console.error('❌ Failed to parse JSON response:', e);
+      data = null; 
+    }
+
+    if (response.ok && data && data.success) {
+      console.log('✅ Signup successful!');
+      userEmail = email;
+      showVerificationForm();
+      startCodeTimer();
+      
+      // Show dev code in console for testing
+      if (data && data.devCode) {
+        console.log('🔑 Development Code:', data.devCode);
+        alert(`Development Mode: Your verification code is ${data.devCode}`);
+      }
+    } else {
+      console.error('❌ Signup failed:', {
+        status: response.status,
+        statusText: response.statusText,
+        data: data
+      });
+      
+      if (response.status === 429) {
+        alert('Too many signup attempts. Please wait a moment and try again.');
+        return;
+      }
+      
+      if (response.status === 404) {
+        alert('Signup endpoint not found. Please check your connection or contact support.');
+        console.error('Endpoint URL:', getApiBase() + '/auth/signup');
+        return;
+      }
+      
+      if (response.status === 500) {
+        const message = (data && data.message) || 'Server error. Please try again later.';
+        alert('Signup failed: ' + message);
+        console.error('Server error details:', data);
+        return;
+      }
+      
+      const message = (data && data.message) || `HTTP ${response.status}: ${response.statusText}`;
+      alert('Signup failed: ' + message);
+    }
+  } catch (error) {
+    console.error('❌ Signup error:', error);
+    console.error('Error details:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack
+    });
+    
+    if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+      alert('Network error: Could not connect to server. Please check your internet connection.');
+    } else {
+      alert('An error occurred during signup: ' + error.message);
+    }
+  }
+});
+
+// Handle verification form submission
+document.getElementById('verification-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const code = document.getElementById('verification-code').value;
+
+  if (code.length !== 6) {
+    showError('Please enter a 6-digit code');
+    return;
+  }
+
+  try {
+    const response = await apiFetch('/auth/verify-code', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: userEmail, code })
+    });
+
+    let data; try { data = await response.json(); } catch(e) { data = null; }
+
+    if (response.ok && data && data.success) {
+      clearInterval(codeExpiryTimer);
+      
+      // Save token and user data
+      sessionStorage.setItem('authToken', data.token);
+      localStorage.setItem('currentUser', JSON.stringify(data.user));
+      
+      showSuccessModal('Welcome!', `Account created successfully! Welcome, ${data.user.name}!`);
+      
+      setTimeout(() => {
+        window.location.href = data.user.role === 'admin' ? 'dashboard.html' : 'index.html';
+      }, 2000);
+    } else {
+      showError((data && data.message) || (response.status === 404 ? 'Verification endpoint not found.' : `HTTP ${response.status}`));
+    }
+  } catch (error) {
+    console.error('Verification error:', error);
+    showError('Verification failed. Please try again.');
+  }
+});
+
+// Resend verification code
+async function resendCode() {
+  const resendBtn = document.querySelector('button[onclick="resendCode()"]');
+  const originalText = resendBtn ? resendBtn.textContent : 'Resend Code';
+  
+  try {
+    // Disable button and show loading state
+    if (resendBtn) {
+      resendBtn.disabled = true;
+      resendBtn.textContent = 'Sending...';
+    }
+    
+    console.log('📤 Resending verification code to:', userEmail);
+    
+    const response = await apiFetch('/auth/resend-code', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: userEmail })
+    });
+
+    console.log('📥 Resend response status:', response.status, response.statusText);
+
+    let data; 
+    try { 
+      data = await response.json(); 
+      console.log('📦 Resend response data:', data);
+    } catch(e) { 
+      console.error('❌ Failed to parse JSON response:', e);
+      data = null; 
+    }
+
+    if (response.ok && data && data.success) {
+      console.log('✅ Resend successful!');
+      
+      // Show success message
+      alert('New verification code sent to your email! Please check your inbox.');
+      
+      // Clear code input and reset timer
+      document.getElementById('verification-code').value = '';
+      clearInterval(codeExpiryTimer);
+      startCodeTimer();
+      hideError();
+      
+      // Show dev code in console/alert for testing
+      if (data && data.devCode) {
+        console.log('🔑 New Development Code:', data.devCode);
+        if (process.env.NODE_ENV === 'development' || localStorage.getItem('devMode') === 'true') {
+          alert(`Development Mode: Your new verification code is ${data.devCode}`);
+        }
+      }
+    } else {
+      console.error('❌ Resend failed:', {
+        status: response.status,
+        statusText: response.statusText,
+        data: data
+      });
+      
+      if (response.status === 429) {
+        alert('⏳ Too many requests. Please wait a moment and try again.');
+        return;
+      }
+      
+      if (response.status === 404) {
+        alert('Resend endpoint not found. Please check your connection.');
+        console.error('Endpoint URL:', getApiBase() + '/auth/resend-code');
+        return;
+      }
+      
+      const message = (data && data.message) || `HTTP ${response.status}: ${response.statusText}`;
+      alert('Failed to resend code: ' + message);
+    }
+  } catch (error) {
+    console.error('❌ Resend error:', error);
+    console.error('Error details:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack
+    });
+    
+    if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+      alert('Network error: Could not connect to server. Please check your internet connection.');
+    } else {
+      alert('Failed to resend code: ' + error.message);
+    }
+  } finally {
+    // Re-enable button
+    if (resendBtn) {
+      resendBtn.disabled = false;
+      resendBtn.textContent = originalText;
+    }
+  }
+}
+
+// Show verification form
+function showVerificationForm() {
+  document.getElementById('signup-form').classList.add('hidden');
+  document.getElementById('verification-form').classList.remove('hidden');
+  document.getElementById('verification-email').textContent = userEmail;
+  document.getElementById('verification-code').focus();
+}
+
+// Back to signup
+function backToSignup() {
+  clearInterval(codeExpiryTimer);
+  document.getElementById('verification-form').classList.add('hidden');
+  document.getElementById('signup-form').classList.remove('hidden');
+  document.getElementById('verification-code').value = '';
+  hideError();
+}
+
+// Start countdown timer
+function startCodeTimer() {
+  let timeLeft = 600; // 10 minutes in seconds
+  
+  codeExpiryTimer = setInterval(() => {
+    timeLeft--;
+    
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    document.getElementById('code-timer').textContent = 
+      `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    
+    if (timeLeft <= 0) {
+      clearInterval(codeExpiryTimer);
+      showError('Verification code expired. Please request a new one.');
+    }
+  }, 1000);
+}
+
+// Show error message
+function showError(message) {
+  const errorDiv = document.getElementById('verification-error');
+  errorDiv.textContent = message;
+  errorDiv.classList.remove('hidden');
+}
+
+// Hide error message
+function hideError() {
+  document.getElementById('verification-error').classList.add('hidden');
+}
+
+// Handle Google signup
+function handleSignupGoogle(response) {
+  const token = response.credential;
+
+  apiFetch('/auth/google', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      sessionStorage.setItem('authToken', data.token);
+      localStorage.setItem('currentUser', JSON.stringify(data.user));
+      
+      showSuccessModal('Welcome!', `Welcome, ${data.user.name}!`);
+      
+      setTimeout(() => {
+        window.location.href = data.user.role === 'admin' ? 'dashboard.html' : 'index.html';
+      }, 2000);
+    } else {
+      alert('Google signup failed: ' + data.message);
+    }
+  })
+  .catch(error => {
+    console.error('Google signup error:', error);
+    alert('An error occurred with Google signup');
+  });
+}
+
+// Show success modal
+function showSuccessModal(title, message) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-message').textContent = message;
+  document.getElementById('success-modal').classList.remove('hidden');
+  document.getElementById('success-modal').classList.add('flex');
+}
+
+// Close modal
+function closeModal() {
+  document.getElementById('success-modal').classList.add('hidden');
+  document.getElementById('success-modal').classList.remove('flex');
+}
+
+// Toggle password visibility
+function togglePasswordVisibility(inputId, buttonId) {
+  const input = document.getElementById(inputId);
+  const button = document.getElementById(buttonId);
+  
+  if (!input || !button) return;
+  
+  const isPassword = input.type === 'password';
+  input.type = isPassword ? 'text' : 'password';
+  
+  // Update icon
+  const svg = button.querySelector('svg');
+  if (svg) {
+    if (isPassword) {
+      // Show eye-slash icon (password is visible)
+      svg.innerHTML = `
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.132m0 0L21 21"></path>
+      `;
+    } else {
+      // Show eye icon (password is hidden)
+      svg.innerHTML = `
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+      `;
+    }
+  }
+}
+
+console.log('Signup with verification loaded');
+</script>
+
+</body>
+</html>
